@@ -58,8 +58,8 @@ def convert_files(path: Path, path_target: Path):
     return mel.astype(np.float32), quant.astype(np.int64)
 
 
-def process_wavs(paths: Tuple[Path, Path]):
-    path, path_target = paths
+def process_wavs(wav_paths: Tuple[Path, Path]):
+    path, path_target = wav_paths
     wav_id = path.stem
     m, x = convert_files(path, path_target)
     np.save(paths.mel/f'{wav_id}.npy', m, allow_pickle=False)
@@ -72,7 +72,7 @@ target_wav_files = sorted(get_files(target_path, extension))
 paths = Paths(hp.data_path, hp.voc_model_id, hp.tts_model_id)
 
 print(f'\n{len(wav_files)} {extension[1:]} files found in "{path}"\n')
-print(f'\n{len(target_wav_files)} {extension[1:]} target files found in "{path}"\n')
+print(f'\n{len(target_wav_files)} {extension[1:]} target files found in "{target_path}"\n')
 
 if len(wav_files) == 0 or len(target_wav_files) == 0:
 
