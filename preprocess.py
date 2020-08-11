@@ -9,6 +9,7 @@ import argparse
 from utils.text.recipes import ljspeech
 from utils.files import get_files
 from pathlib import Path
+from typing import Tuple
 
 
 # Helper functions for argument types
@@ -57,7 +58,8 @@ def convert_files(path: Path, path_target: Path):
     return mel.astype(np.float32), quant.astype(np.int64)
 
 
-def process_wavs(path: Path, path_target: Path):
+def process_wavs(paths: Tuple[Path, Path]):
+    path, path_target = paths
     wav_id = path.stem
     m, x = convert_files(path, path_target)
     np.save(paths.mel/f'{wav_id}.npy', m, allow_pickle=False)
