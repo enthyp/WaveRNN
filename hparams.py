@@ -47,7 +47,7 @@ voc_res_blocks = 10
 # Training
 voc_batch_size = 32
 voc_lr = 1e-4
-voc_checkpoint_every = 3_000
+voc_checkpoint_every = 1_000
 voc_gen_at_checkpoint = 5           # number of samples to generate at each checkpoint
 voc_total_steps = 1_000_000         # Total number of training steps
 voc_test_samples = 50               # How many unseen samples to put aside for testing
